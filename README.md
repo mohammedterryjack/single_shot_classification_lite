@@ -2,11 +2,9 @@
 
 Same as other repo but lite weight version - using Poincare embeddings and XLM
 
-![](img/tutorial.gif)
-
 ## One-Shot Training
 
-first train the model by showing it a few examples of how you want your data to be labelled.  You can do one-shot labels or sequences. The data should be formatted like so:
+Quickly train your model by showing a few examples of how you want your data to be labelled (You can even do sequences). The data should be formatted like so:
 
 ```python
 training_url = "https://immense-dusk-95991.herokuapp.com/train"
@@ -23,7 +21,7 @@ training_examples = {
 response = post(training_url, json=train_data)
 >> <Response [200]>
 ```
-You will receive a json back with the trained weights and the labels you provided. Simply keep these weights and labels and you do not need to train it again (unless you wish to change the task).  
+You will receive a json back with your model's trained `weights` and class `labels`. You can save this data (you do not need to train the model again - unless you wish to change the task, etc).  
 
 ```python
 model_parameters = response.json()
@@ -35,7 +33,7 @@ model_parameters = response.json()
 
 ## Classifying
 
-You can now classify as much as you like using your trained model weights!  You simply post your query `text` along with your trained `weights` and `labels` (that you receive back when training)
+You can now classify as much as you like using your trained model.  Simply post your query `text` along with the trained `weights` and `labels` (that you received back from training)
 
 ```python
 classification_url = "https://immense-dusk-95991.herokuapp.com/label"
@@ -45,18 +43,21 @@ classification_example = {
     "labels":model_parameters.get("labels"),
 }
 
-response = post(classification_url, json=classification_example)
->> <Response [200]>
-```
-
-You will receive back the text labelled according to your desired labels
-
-```python
-response.json()
+post(classification_url, json=classification_example).json()
 >> {
     "text":"this is a wolf",
     "class_labels":["ANIMAL","NON-ANIMAL"],
     "extracted_tokens":["wolf"],
     "classification":["ANIMAL"]
 }
+
 ```
+
+You will receive back the text labelled according to your desired labels
+
+
+## Tutorial
+
+![](img/tutorial.gif)
+
+Here is a demo showing how quick and simple the process is to train a fully working model and use it to classify
