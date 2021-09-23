@@ -56,6 +56,7 @@ You will receive back the text labelled according to your desired labels
 
 ## Tutorial
 
+Here is a demo showing how quick and simple the whole process is (from training to using your one-shot classifier)
+
 ![](img/tutorial.gif)
 
-Here is a demo showing how quick and simple the process is to train a fully working model and use it to classify
