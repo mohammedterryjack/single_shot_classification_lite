@@ -2,6 +2,8 @@
 
 Same as other repo but lite weight version - using Poincare embeddings and XLM
 
+![](img/tutorial.gif)
+
 ## One-Shot Training
 
 first train the model by showing it a few examples of how you want your data to be labelled.  You can do one-shot labels or sequences. The data should be formatted like so:
