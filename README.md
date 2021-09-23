@@ -44,12 +44,10 @@ classification_example = {
 }
 
 post(classification_url, json=classification_example).json()
->> {
-    "text":"this is a wolf",
-    "class_labels":["ANIMAL","NON-ANIMAL"],
+>> {...
     "extracted_tokens":["wolf"],
     "classification":["ANIMAL"]
-}
+    }
 
 ```
 
