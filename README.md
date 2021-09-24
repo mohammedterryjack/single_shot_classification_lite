@@ -1,7 +1,5 @@
 # Single-Shot Classification (Lite)
 
-Same as other repo but lite weight version - using Poincare embeddings and XLM
-
 ## One-Shot Training
 
 Quickly train your model by showing a few examples of how you want your data to be labelled (You can even do sequences). The data should be formatted like so:
@@ -60,3 +58,5 @@ Here is a demo showing how quick and simple the whole process is (from training 
 
 ![](img/tutorial.gif)
 
+## Model
+NB: Same as other repo but lite weight version - using Poincare+Positional embeddings and extreme-Learning-Machine
