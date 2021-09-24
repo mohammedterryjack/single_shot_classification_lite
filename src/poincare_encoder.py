@@ -1,5 +1,6 @@
 from typing import Dict, List, Tuple
 from json import loads 
+from math import sin,cos
 
 from numpy import array,zeros
 
@@ -14,5 +15,18 @@ class PoincareEmbeddings:
 
     def encode(self, text:str) -> array:
         words = text.lower().split()
-        vectors = list(map(self.embed_word,words))
-        return array(vectors).mean(axis=0)
+        word_vectors = array(list(map(self.embed_word,words)))
+        position_vectors = array(list(map(self.embed_position,range(len(words)))))
+        vectors = word_vectors + position_vectors
+        return vectors.mean(axis=0)
+    
+    def embed_position(self, position:int) -> List[float]:
+        constant=1e5
+        position_vector = [0.]*self.vector_length
+        for index in range(0,self.vector_length,2):
+            double_index = 2*index
+            double_index_normalised = double_index/self.vector_length
+            denominator = constant ** double_index_normalised
+            position_vector[index]=sin(position/denominator)
+            position_vector[index+1]=cos(position/denominator)
+        return position_vector
