@@ -16,7 +16,7 @@ training_examples = {
     ]
 }
 
-response = post(training_url, json=train_data)
+response = post(training_url, json=training_examples)
 >> <Response [200]>
 ```
 You will receive a json back with your model's trained `weights` and class `labels`. You can save this data (you do not need to train the model again - unless you wish to change the task, etc).  
